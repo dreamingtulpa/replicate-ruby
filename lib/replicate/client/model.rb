@@ -6,14 +6,14 @@ module Replicate
     module Model
       # Get a model
       # @see https://replicate.com/docs/reference/http#get-model
-      def retrieve_model(model_owner, model_name, version: :latest)
+      def retrieve_model(model, version: :latest)
         case version
         when :latest
-          get("models/#{model_owner}/#{model_name}")
+          get("models/#{model}")
         when :all
-          get("models/#{model_owner}/#{model_name}/versions")
+          get("models/#{model}/versions")
         else
-          get("models/#{model_owner}/#{model_name}/versions/#{version}")
+          get("models/#{model}/versions/#{version}")
         end
       end
 
