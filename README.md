@@ -1,8 +1,6 @@
-# Replicate
+# Replicate Ruby client
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/replicate/ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a Ruby client for Replicate. It lets you run models from your Ruby code and do various other things on Replicate.
 
 ## Installation
 
@@ -12,17 +10,22 @@ Add this line to your application's Gemfile:
 gem 'replicate-ruby'
 ```
 
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install replicate-ruby
-
 ## Usage
 
-TODO: Write usage instructions here
+Grab your token from replicate.com/account and authenticate by configuring `api_token`:
+
+```ruby
+Replicate.configure do |config|
+  config.api_token = "your_api_token"
+end
+```
+
+You can run a model and get its output:
+
+```ruby
+model = Replicate.client.retrieve_model("stability-ai/stable-diffusion")
+prediction = model.latest_version.create_prediction(input: { prompt: "a handsome teddy bear" })
+```
 
 ## Development
 
