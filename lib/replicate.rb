@@ -1,8 +1,17 @@
 # frozen_string_literal: true
 
-require_relative "version"
+require "replicate/version"
+require "replicate/client"
 
 module Replicate
   class Error < StandardError; end
-  # Your code goes here...
+
+  class << self
+    include Replicate::Configurable
+
+    def client
+      return @client if defined?(@client)
+      @client = Replicate::Client.new(options)
+    end
+  end
 end
