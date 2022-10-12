@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/replicate/ruby/version"
+require_relative "lib/replicate/version"
 
 Gem::Specification.new do |spec|
   spec.name = "replicate-ruby"
-  spec.version = Replicate::Ruby::VERSION
+  spec.version = Replicate::VERSION
   spec.authors = ["Daniel Puglisi"]
   spec.email = ["daniel@codegestalt.com"]
 
