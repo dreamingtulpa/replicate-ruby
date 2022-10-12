@@ -3,6 +3,11 @@
 require "replicate/version"
 require "replicate/client"
 
+require "replicate/record/base"
+require "replicate/record/model"
+require "replicate/record/model_version"
+require "replicate/record/prediction"
+
 module Replicate
   class Error < StandardError; end
 

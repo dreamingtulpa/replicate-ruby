@@ -26,7 +26,7 @@ module Replicate
     private
 
     def options
-      Hash[Replicate::Configurable.keys.index_with { |key| send(key) }]
+      Hash[Replicate::Configurable.keys.map { |key| [key, send(key)] }]
     end
   end
 end
