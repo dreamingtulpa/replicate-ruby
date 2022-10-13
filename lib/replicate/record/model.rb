@@ -3,8 +3,8 @@
 module Replicate
   module Record
     class Model < Base
-      def initialize(params)
-        params["latest_version"] = Replicate::Record::ModelVersion.new(params["latest_version"])
+      def initialize(client, params)
+        params["latest_version"] = Replicate::Record::ModelVersion.new(client, params["latest_version"])
         super
       end
     end

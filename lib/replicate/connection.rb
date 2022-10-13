@@ -100,10 +100,10 @@ module Replicate
     def request(method, path, data)
       @last_response = agent.send(method, Addressable::URI.parse(path.to_s).normalize.to_s, data)
       case @last_response.status
-      when 200
-        JSON.parse(@last_response.body)
-      else
+      when 400
         raise Error, "#{@last_response.status} #{@last_response.reason_phrase}: #{JSON.parse(@last_response.body)}"
+      else
+        JSON.parse(@last_response.body)
       end
     end
   end

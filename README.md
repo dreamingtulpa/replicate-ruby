@@ -47,6 +47,9 @@ prediction = prediction.refetch
 
 # or cancel a running prediction
 prediction = prediction.cancel
+
+# and if a prediction returns with status succeeded, you can retrieve the output
+output = prediction.output
 ```
 
 ## Development

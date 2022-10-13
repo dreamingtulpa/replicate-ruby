@@ -9,13 +9,13 @@ module Replicate
       def retrieve_model(model, version: :latest)
         case version
         when :latest
-          Replicate::Record::Model.new(get("models/#{model}"))
+          Replicate::Record::Model.new(self, get("models/#{model}"))
         when :all
           response = get("models/#{model}/versions")
-          response["results"].map! { |result| Replicate::Record::ModelVersion.new(result) }
+          response["results"].map! { |result| Replicate::Record::ModelVersion.new(self, result) }
           response
         else
-          Replicate::Record::ModelVersion.new(get("models/#{model}/versions/#{version}"))
+          Replicate::Record::ModelVersion.new(self, get("models/#{model}/versions/#{version}"))
         end
       end
 
