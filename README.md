@@ -20,11 +20,33 @@ Replicate.configure do |config|
 end
 ```
 
-You can run a model and get its output:
+You can retrieve a model:
 
 ```ruby
+# Latest version
 model = Replicate.client.retrieve_model("stability-ai/stable-diffusion")
-prediction = model.latest_version.create_prediction(input: { prompt: "a handsome teddy bear" })
+version = model.latest_version
+
+# List of versions
+version = Replicate.client.retrieve_model("stability-ai/stable-diffusion", version: all)
+
+# Specific version
+version = Replicate.client.retrieve_model("stability-ai/stable-diffusion", version: "<id>")
+```
+
+And then run predictions on it:
+
+```ruby
+prediction = version.predict(prompt: "a handsome teddy bear")
+
+# Optionally you can submit a webhook url for replicate to send a POST request once a prediction has completed
+prediction = version.predict(prompt: "a handsome teddy bear", "https://webhook.url/path")
+
+# Or manually refetch predictions
+prediction = prediction.refetch
+
+# or cancel a running prediction
+prediction = prediction.cancel
 ```
 
 ## Development
