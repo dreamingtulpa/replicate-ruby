@@ -5,18 +5,18 @@ require_relative "lib/replicate/version"
 Gem::Specification.new do |spec|
   spec.name = "replicate-ruby"
   spec.version = Replicate::VERSION
-  spec.authors = ["Daniel Puglisi"]
-  spec.email = ["daniel@codegestalt.com"]
+  spec.authors = ["Dreaming Tulpa"]
+  spec.email = ["hey@dreamingtulpa.com"]
 
   spec.summary = "Ruby client for Replicate"
-  spec.homepage = "https://github.com/danielpuglisi/replicate-ruby"
+  spec.homepage = "https://github.com/dreamingtulpa/replicate-ruby"
   spec.required_ruby_version = ">= 2.6.0"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/danielpuglisi/replicate-ruby"
-  spec.metadata["changelog_uri"] = "https://github.com/danielpuglisi/replicate-ruby/blob/master/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/dreamingtulpa/replicate-ruby"
+  spec.metadata["changelog_uri"] = "https://github.com/dreamingtulpa/replicate-ruby/blob/master/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
