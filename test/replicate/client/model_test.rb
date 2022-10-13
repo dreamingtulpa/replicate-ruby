@@ -10,6 +10,6 @@ class Replicate::Client::ModelTest < MiniTest::Test
 
     client = Replicate::Client.new
     res = client.retrieve_model("stability-ai/stable-diffusion")
-    assert_equal "stable-diffusion", res["name"]
+    assert_equal "stable-diffusion", res.name
   end
 end
