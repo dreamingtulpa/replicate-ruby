@@ -5,3 +5,7 @@ require "replicate"
 
 require "minitest/autorun"
 require "webmock/minitest"
+
+def client
+  @client ||= Replicate.client
+end
