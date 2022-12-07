@@ -4,6 +4,7 @@ module Replicate
   module Record
     class Base
       attr_accessor :data
+      attr_reader :client
 
       def initialize(client, params)
         @client = client

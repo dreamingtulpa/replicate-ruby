@@ -11,4 +11,10 @@ class Replicate::Record::BaseTest < MiniTest::Test
       record.something
     end
   end
+
+  def test_client
+    record = Replicate::Record::Base.new(client, "id" => "test")
+    assert_equal "test", record.id
+    assert_equal client, record.client
+  end
 end
