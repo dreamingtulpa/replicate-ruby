@@ -4,11 +4,11 @@ module Replicate
   module Record
     class Prediction < Base
       def refetch
-        self.assign_attributes = client.retrieve_prediction(id)
+        @data = client.retrieve_prediction(id).data
       end
 
       def cancel
-        self.assign_attributes = client.cancel_prediction(id)
+        @data = client.cancel_prediction(id).data
       end
     end
   end
