@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    replicate-ruby (0.1.1)
+    replicate-ruby (0.1.2)
       addressable
       faraday (>= 2.0)
       faraday-retry
