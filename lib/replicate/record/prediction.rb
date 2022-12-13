@@ -10,6 +10,15 @@ module Replicate
       def cancel
         @data = client.cancel_prediction(id).data
       end
+
+      def finished?
+        case status
+        when "succeeded", "failed", "canceled"
+          true
+        else
+          false
+        end
+      end
     end
   end
 end

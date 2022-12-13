@@ -13,4 +13,15 @@ class Replicate::Record::PredictionTest < MiniTest::Test
 
     assert_equal "2022-12-07T13:57:32.018353Z", record.completed_at
   end
+
+  def test_finished?
+    record = Replicate::Record::Prediction.new(client, "status" => "starting")
+    assert_equal false, record.finished?
+    record = Replicate::Record::Prediction.new(client, "status" => "succeeded")
+    assert_equal true, record.finished?
+    record = Replicate::Record::Prediction.new(client, "status" => "failed")
+    assert_equal true, record.finished?
+    record = Replicate::Record::Prediction.new(client, "status" => "canceled")
+    assert_equal true, record.finished?
+  end
 end
