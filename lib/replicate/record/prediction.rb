@@ -19,6 +19,26 @@ module Replicate
           false
         end
       end
+
+      def starting?
+        status == "starting"
+      end
+
+      def processing?
+        status == "processing"
+      end
+
+      def succeeded?
+        status == "succeeded"
+      end
+
+      def failed?
+        status == "failed"
+      end
+
+      def canceled?
+        status == "canceled"
+      end
     end
   end
 end
