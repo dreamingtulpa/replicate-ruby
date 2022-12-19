@@ -21,6 +21,7 @@ module Replicate
       # Create a prediction
       # @see https://replicate.com/docs/reference/http#create-prediction
       def create_prediction(params)
+        params[:webhook_completed] ||= webhook_url
         Replicate::Record::Prediction.new(self, post("predictions", params))
       end
 
