@@ -5,6 +5,7 @@ require "replicate/endpoint"
 
 require "replicate/client/model"
 require "replicate/client/prediction"
+require "replicate/client/upload"
 
 module Replicate
   class Client
@@ -12,6 +13,7 @@ module Replicate
 
     include Replicate::Client::Model
     include Replicate::Client::Prediction
+    include Replicate::Client::Upload
 
     def initialize(options = {})
       # Use options passed in, but fall back to module defaults
