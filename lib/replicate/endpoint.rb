@@ -7,12 +7,19 @@ require "addressable/uri"
 
 module Replicate
   # Network layer for API clients.
-  module Connection
+  class Endpoint
     DEFAULT_MEDIA_TYPE = "application/json"
     USER_AGENT = "Datatrans Ruby Gem"
 
     # Header keys that can be passed in options hash to {#get},{#head}
     CONVENIENCE_HEADERS = Set.new(%i[accept content_type])
+
+    attr_reader :endpoint_url, :api_token
+
+    def initialize(endpoint_url:, api_token:)
+      @endpoint_url = endpoint_url
+      @api_token = api_token
+    end
 
     # Make a HTTP GET request
     #
@@ -72,7 +79,7 @@ module Replicate
     #
     # @return [Sawyer::Agent]
     def agent
-      @agent ||= Faraday.new(url: endpoint) do |conn|
+      @agent ||= Faraday.new(url: endpoint_url) do |conn|
         conn.request :retry
         conn.request :authorization, 'Token', api_token
         conn.headers["Content-Type"] = DEFAULT_MEDIA_TYPE
@@ -87,12 +94,6 @@ module Replicate
     # @return [Sawyer::Response]
     def last_response
       @last_response if defined? @last_response
-    end
-
-    protected
-
-    def endpoint
-      api_endpoint
     end
 
     private

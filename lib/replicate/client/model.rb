@@ -9,20 +9,22 @@ module Replicate
       def retrieve_model(model, version: :latest)
         case version
         when :latest
-          Replicate::Record::Model.new(self, get("models/#{model}"))
+          response = api_endpoint.get("models/#{model}")
+          Replicate::Record::Model.new(self, response)
         when :all
-          response = get("models/#{model}/versions")
+          response = api_endpoint.get("models/#{model}/versions")
           response["results"].map! { |result| Replicate::Record::ModelVersion.new(self, result) }
           response
         else
-          Replicate::Record::ModelVersion.new(self, get("models/#{model}/versions/#{version}"))
+          response = api_endpoint.get("models/#{model}/versions/#{version}")
+          Replicate::Record::ModelVersion.new(self, response)
         end
       end
 
       # Get a collection of models
       # @see https://replicate.com/docs/reference/http#get-collection
       def retrieve_collection(slug)
-        get("collections/#{slug}")
+        api_endpoint.get("collections/#{slug}")
       end
     end
   end
