@@ -3,22 +3,18 @@
 require "faraday"
 require "faraday/net_http"
 require "faraday/retry"
+require "faraday/multipart"
 require "addressable/uri"
 
 module Replicate
   # Network layer for API clients.
   class Endpoint
-    DEFAULT_MEDIA_TYPE = "application/json"
-    USER_AGENT = "Datatrans Ruby Gem"
+    attr_reader :endpoint_url, :api_token, :content_type
 
-    # Header keys that can be passed in options hash to {#get},{#head}
-    CONVENIENCE_HEADERS = Set.new(%i[accept content_type])
-
-    attr_reader :endpoint_url, :api_token
-
-    def initialize(endpoint_url:, api_token:)
+    def initialize(endpoint_url:, api_token:, content_type: 'application/json')
       @endpoint_url = endpoint_url
       @api_token = api_token
+      @content_type = content_type
     end
 
     # Make a HTTP GET request
@@ -81,9 +77,8 @@ module Replicate
     def agent
       @agent ||= Faraday.new(url: endpoint_url) do |conn|
         conn.request :retry
-        conn.request :authorization, 'Token', api_token
-        conn.headers["Content-Type"] = DEFAULT_MEDIA_TYPE
-        conn.headers["Accept"] = DEFAULT_MEDIA_TYPE
+        conn.request :authorization, 'Token', api_token if api_token
+        conn.headers["Content-Type"] = content_type
 
         conn.adapter :net_http
       end
@@ -104,7 +99,12 @@ module Replicate
       when 400
         raise Error, "#{@last_response.status} #{@last_response.reason_phrase}: #{JSON.parse(@last_response.body)}"
       else
-        JSON.parse(@last_response.body)
+        case content_type
+        when 'application/json'
+          JSON.parse(@last_response.body)
+        else
+          @last_response.body
+        end
       end
     end
   end

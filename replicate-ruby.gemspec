@@ -32,10 +32,12 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "faraday", ">= 2.0"
   spec.add_dependency "faraday-retry"
+  spec.add_dependency "faraday-multipart"
   spec.add_dependency "addressable"
 
   spec.add_development_dependency "pry"
   spec.add_development_dependency "webmock"
+  spec.add_development_dependency "byebug"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

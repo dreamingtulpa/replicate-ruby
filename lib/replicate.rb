@@ -7,6 +7,7 @@ require "replicate/record/base"
 require "replicate/record/model"
 require "replicate/record/model_version"
 require "replicate/record/prediction"
+require "replicate/record/upload"
 
 module Replicate
   class Error < StandardError; end
