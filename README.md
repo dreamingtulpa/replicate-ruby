@@ -79,6 +79,17 @@ training = Replicate.client.create_training(
 )
 ```
 
+As soon as the model has finished training, you can run predictions on it:
+
+```
+prediction = Replicate.client.create_prediction(
+  input: {
+    prompt: 'your prompt, zwx style'
+  },
+  version: training.version
+)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
