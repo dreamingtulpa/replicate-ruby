@@ -54,6 +54,31 @@ id = prediction.id # store prediction id in your backend
 prediction = Replicate.client.retrieve_prediction(id) # retrieve prediction during webhook with id from backend
 ```
 
+## Dreambooth
+
+There is support for the [experimental dreambooth endpoint](https://replicate.com/blog/dreambooth-api).
+
+First, upload your training dataset:
+
+```
+upload = Replicate.client.create_upload
+upload.attach('tmp/data.zip') # replace with the path to your zip file
+```
+
+Then start training a new model using, for instance:
+
+```
+training = Replicate.client.create_training(
+  input: {
+    instance_prompt: "zwx style",
+    class_prompt: "style",
+    instance_data: upload.serving_url,
+    max_train_steps: 5000
+  },
+  model: 'yourusername/yourmodel'
+)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
