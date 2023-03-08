@@ -60,14 +60,14 @@ There is support for the [experimental dreambooth endpoint](https://replicate.co
 
 First, upload your training dataset:
 
-```
+```ruby
 upload = Replicate.client.create_upload
 upload.attach('tmp/data.zip') # replace with the path to your zip file
 ```
 
 Then start training a new model using, for instance:
 
-```
+```ruby
 training = Replicate.client.create_training(
   input: {
     instance_prompt: "zwx style",
@@ -81,7 +81,7 @@ training = Replicate.client.create_training(
 
 As soon as the model has finished training, you can run predictions on it:
 
-```
+```ruby
 prediction = Replicate.client.create_prediction(
   input: {
     prompt: 'your prompt, zwx style'
