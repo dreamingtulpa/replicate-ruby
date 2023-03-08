@@ -61,8 +61,7 @@ There is support for the [experimental dreambooth endpoint](https://replicate.co
 First, upload your training dataset:
 
 ```ruby
-upload = Replicate.client.create_upload
-upload.attach('tmp/data.zip') # replace with the path to your zip file
+upload = Replicate.client.upload_zip('tmp/data.zip') # replace with the path to your zip file
 ```
 
 Then start training a new model using, for instance:
