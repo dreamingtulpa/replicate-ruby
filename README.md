@@ -89,6 +89,12 @@ prediction = Replicate.client.create_prediction(
 )
 ```
 
+You can also download the `output.zip` file from the dreambooth training prediction, unzip it, and then convert the trained model to a Stable Diffusion checkpoint with [convert_diffusers_to_sd.py](https://gist.github.com/jachiam/8a5c0b607e38fcc585168b90c686eb05).
+
+```bash
+python ./convert_diffusers_to_sd.py --model_path ~/Downloads/output --checkpoint_path ~/Downloads/output.ckpt
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
