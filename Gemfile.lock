@@ -3,7 +3,7 @@ PATH
   specs:
     replicate-ruby (0.2.1)
       addressable
-      faraday (>= 2.0)
+      faraday (~> 1)
       faraday-multipart
       faraday-retry
 
@@ -17,14 +17,12 @@ GEM
     coderay (1.1.3)
     crack (0.4.5)
       rexml
-    faraday (2.7.2)
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
+    faraday (1.2.0)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     faraday-multipart (1.0.4)
       multipart-post (~> 2)
-    faraday-net_http (3.0.2)
-    faraday-retry (2.0.0)
-      faraday (~> 2.0)
+    faraday-retry (1.0.3)
     hashdiff (1.0.1)
     json (2.6.2)
     method_source (1.0.0)
@@ -63,6 +61,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-darwin-19
   x86_64-darwin-21
 
 DEPENDENCIES
@@ -75,4 +74,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.3.26
+   2.4.0
