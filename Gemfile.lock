@@ -3,7 +3,7 @@ PATH
   specs:
     replicate-ruby (0.2.1)
       addressable
-      faraday (>= 2.0)
+      faraday (>= 1.0)
       faraday-multipart
       faraday-retry
 

@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency "faraday", ">= 2.0"
+  spec.add_dependency "faraday", ">= 1.0"
   spec.add_dependency "faraday-retry"
   spec.add_dependency "faraday-multipart"
   spec.add_dependency "addressable"
