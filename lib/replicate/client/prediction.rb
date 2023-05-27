@@ -30,7 +30,7 @@ module Replicate
       # Cancel a prediction
       # @see https://replicate.com/docs/reference/http#cancel-prediction
       def cancel_prediction(id)
-        response = api_endpont.post("predictions/#{id}/cancel")
+        response = api_endpoint.post("predictions/#{id}/cancel")
         Replicate::Record::Prediction.new(self, response)
       end
     end
