@@ -14,7 +14,7 @@ module Replicate
       # Create a training
       # @see https://replicate.com/blog/dreambooth-api
       def create_training(params)
-        params[:webhook_completed] ||= webhook_url
+        params[:webhook] ||= webhook_url
         response = dreambooth_endpoint.post("trainings", params)
         Replicate::Record::Training.new(self, response)
       end
