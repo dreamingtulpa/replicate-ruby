@@ -26,6 +26,12 @@ module Replicate
       def retrieve_collection(slug)
         api_endpoint.get("collections/#{slug}")
       end
+
+      # Get all collections
+      # @see https://replicate.com/docs/reference/http#collections.list
+      def list_collections
+        api_endpoint.get("collections")
+      end
     end
   end
 end
